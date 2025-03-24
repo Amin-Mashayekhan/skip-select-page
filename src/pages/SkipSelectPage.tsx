@@ -25,13 +25,13 @@ const SkipCards = styled.div`
   margin-top: 40px;
 `;
 
-const Title = styled.p`
+const Title = styled.h1`
  text-align: center;
  font-size: 2.5rem;
  margin-bottom: 10px;
 `;
 
-const SubTitle = styled.p`
+const SubTitle = styled.h3`
  text-align: center;
  font-size: 1.2rem;
 `;
@@ -60,7 +60,7 @@ const GuideTitle = styled.div`
   }
 `;
 
-const GuideTitleContent = styled.div`
+const GuideTitleContent = styled.h2`
   cursor: pointer;
   color: #fff;
   display: flex;

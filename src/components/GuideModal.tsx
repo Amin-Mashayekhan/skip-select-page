@@ -45,7 +45,7 @@ const CloseButton = styled.button`
   z-index: 1001;
 `;
 
-const ModalImage = styled.img<{ isZoomed: boolean }>`
+const ModalImage = styled.img<{ $isZoomed: boolean }>`
   max-width: 100%;
   max-height: 80vh;
   border-radius: 10px;
@@ -53,7 +53,7 @@ const ModalImage = styled.img<{ isZoomed: boolean }>`
   transition: transform 0.3s ease;
   background-position: top left;
   object-fit: contain;
-  transform: ${({ isZoomed }) => (isZoomed ? "scale(1.8) translate(16%, 24%)" : "scale(1)")};
+  transform: ${({ $isZoomed }) => ($isZoomed ? "scale(1.8) translate(16%, 24%)" : "scale(1)")};
 `;
 
 const NavigationButton = styled.button`
@@ -153,7 +153,7 @@ const GuideModal: React.FC<GuideModalProps> = ({
         <ModalImage
           src={images[selectedIndex]}
           alt={`Guide Image ${selectedIndex + 1}`}
-          isZoomed={isZoomed}
+          $isZoomed={isZoomed}
           onClick={toggleZoom}
         />
         <ZoomIndicator onClick={toggleZoom}>
