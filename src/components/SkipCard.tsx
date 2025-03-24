@@ -183,8 +183,8 @@ const SkipCard: React.FC<SkipCardProps> = ({ skip }) => {
     <Card>
       <SkipVisual>
         <MultiplyNumber>{skip.size * 2}</MultiplyNumber>
-        <X size={70} />
-        <TrashIcon size={70} />
+        <X size={"4.4rem"} />
+        <TrashIcon size={"4.4rem"} />
       </SkipVisual>
 
       <Title>
@@ -208,7 +208,7 @@ const SkipCard: React.FC<SkipCardProps> = ({ skip }) => {
             </>
           ) : (
             <>
-              <TriangleAlert size={22} /> Private Property Only
+              <TriangleAlert size={"1.4rem"} /> Private Property Only
             </>
           )}
         </Feature>

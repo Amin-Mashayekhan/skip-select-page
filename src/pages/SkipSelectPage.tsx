@@ -12,9 +12,12 @@ import { Info, AlertCircle } from "lucide-react"; // Lucide icons
 import { animations } from "../styles/animations";
 
 const Container = styled.div`
-  padding: 20px;
+  padding: 7px;
   background: linear-gradient(135deg, #111, #333);
   min-height: 100vh;
+  @media(min-width: 576px) {
+    padding: 20px;
+  }
 `;
 
 const SkipCards = styled.div`
