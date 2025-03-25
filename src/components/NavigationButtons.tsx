@@ -6,6 +6,7 @@ import { useAppContext } from "../context/AppContext";
 const NavigationButtonsContainer = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   background: ${({ theme }) => theme.colors.transparentDark};
   padding: 16px 24px;
   position: fixed;
@@ -34,7 +35,7 @@ const NavigationButtonsContainer = styled.div`
 const NavButton = styled.button`
   background: ${({ theme }) => theme.colors.primary};
   color: ${({ theme }) => theme.colors.light};
-  padding: 12px 24px;
+  padding: 12px 22px;
   border: none;
   border-radius: 8px;
   cursor: not-allowed;
@@ -58,6 +59,7 @@ const NavButton = styled.button`
 const StyledBrief = styled.h4`
   color: ${({ theme }) => theme.colors.light};
   font-size: 1.1rem;
+  margin: unset;
 `;
 
 const NavigationButtons: React.FC = () => {
