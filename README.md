@@ -46,7 +46,7 @@ Implemented a theme toggle with carefully selected color palettes (blue/orange a
 ##### Architecture
   - Component-based structure with:
 
-#####Code Quality
+##### Code Quality
 - Strictly used:
 
   - Pure styled-components (no CSS frameworks): In developing the app, I focused on implementing light/dark mode, enhancing responsiveness, and designing intuitive user interfaces. I made a deliberate choice to utilize only styled-components, avoiding any CSS frameworks, to better showcase my design and CSS abilities.
