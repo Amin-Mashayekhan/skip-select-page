@@ -55,6 +55,11 @@ const NavButton = styled.button`
   }
 `;
 
+const StyledBrief = styled.h4`
+  color: ${({ theme }) => theme.colors.light};
+  font-size: 1.1rem;
+`;
+
 const NavigationButtons: React.FC = () => {
   const {
     selectedSkip,
@@ -71,7 +76,7 @@ const NavigationButtons: React.FC = () => {
         <ArrowLeft size={18} />
         Previous
       </NavButton>
-      <h4>{(selectedSkip?.size || 0)+" Yard Skip / £"+totalPrice}</h4>
+      <StyledBrief>{(selectedSkip?.size || 0)+" Yard Skip / £"+totalPrice}</StyledBrief>
       <NavButton>
         Next
         <ArrowRight size={18} />
