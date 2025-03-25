@@ -12,7 +12,7 @@ Implemented a theme toggle with carefully selected color palettes (blue/orange a
 
   - Smooth animations for active and completed steps
 
-  - Improved mobile spacing and touch targets
+  - Improved spacing in mobile devices and touch targets
 
 #### 📸 Skip Visualization System
 - Created an interactive guide lightbox featuring:
@@ -23,7 +23,7 @@ Implemented a theme toggle with carefully selected color palettes (blue/orange a
 
   - Smooth transitions and animations
 
-- Since I didn't have access to the actual images and information about the skips you used for your clients, I downloaded three images from various websites. The references for each one are as follows::
+- Since I didn't have access to the actual images and information about the skips you provide your clients, I downloaded three images from various websites. The references for each one are as follows:
 
   -  src/assets/images/guide-1.png: https://www.rabbitskips.co.uk/wp-content/uploads/2023/04/rabbit-skip-hire-sizes-made-simple.png
 
