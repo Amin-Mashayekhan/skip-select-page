@@ -1,5 +1,5 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
-import { Skip } from '../types/Skip';
+import React, { createContext, useContext, useState, useEffect } from "react";
+import { Skip } from "../types/Skip";
 
 interface AppContextProps {
   selectedSkip: Skip | null;
@@ -12,19 +12,21 @@ interface AppContextProps {
 
 const AppContext = createContext<AppContextProps | undefined>(undefined);
 
-export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const AppProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const [selectedSkip, setSelectedSkip] = useState<Skip | null>(null);
   const [darkMode, setDarkMode] = useState(true);
   const [currentStep, setCurrentStep] = useState(3); // Starting at step 3 since that's what exists
 
   useEffect(() => {
     // Load from localStorage
-    const savedDarkMode = localStorage.getItem('darkMode');
+    const savedDarkMode = localStorage.getItem("darkMode");
     if (savedDarkMode) {
-      setDarkMode(savedDarkMode === 'true');
+      setDarkMode(savedDarkMode === "true");
     }
 
-    const savedSkip = localStorage.getItem('selectedSkip');
+    const savedSkip = localStorage.getItem("selectedSkip");
     if (savedSkip) {
       setSelectedSkip(JSON.parse(savedSkip));
     }
@@ -33,12 +35,17 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const toggleDarkMode = () => {
     const newMode = !darkMode;
     setDarkMode(newMode);
-    localStorage.setItem('darkMode', String(newMode));
+    localStorage.setItem("darkMode", String(newMode));
   };
 
   const handleSetSelectedSkip = (skip: Skip | null) => {
-    setSelectedSkip(skip);
-    localStorage.setItem('selectedSkip', JSON.stringify(skip));
+    if (selectedSkip?.id === skip?.id) {
+      setSelectedSkip(null);
+      localStorage.removeItem("selectedSkip");
+    } else {
+      setSelectedSkip(skip);
+      localStorage.setItem("selectedSkip", JSON.stringify(skip));
+    }
   };
 
   return (
@@ -60,7 +67,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
 export const useAppContext = () => {
   const context = useContext(AppContext);
   if (!context) {
-    throw new Error('useAppContext must be used within an AppProvider');
+    throw new Error("useAppContext must be used within an AppProvider");
   }
   return context;
 };
