@@ -1,23 +1,26 @@
 import { createGlobalStyle } from "styled-components";
 
-const GlobalStyles = createGlobalStyle`
+interface GlobalStyleProps {
+  $darkMode: boolean;
+}
+
+export const GlobalStyles = createGlobalStyle<GlobalStyleProps>`
   body {
-    background: #111;
-    color: #fff;
+    background: ${({ theme }) => theme.colors.background};
+    color: ${({ theme }) => theme.colors.text};
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    transition: background 0.3s ease, color 0.3s ease;
   }
 
   html {
-  font-size: 16px; /* Default for normal screens */
-}
-
-@media (max-width: 450px) {
-  html {
-    font-size: 14px; /* Even smaller for mobile */
+    font-size: 16px;
   }
-}
+
+  @media (max-width: 450px) {
+    html {
+      font-size: 14px;
+    }
+  }
 `;
-
-export default GlobalStyles;
