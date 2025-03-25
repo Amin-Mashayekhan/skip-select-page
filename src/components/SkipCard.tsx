@@ -182,7 +182,7 @@ const SkipCard: React.FC<SkipCardProps> = ({ skip }) => {
   return (
     <Card>
       <SkipVisual>
-        <MultiplyNumber>{skip.size * 2}</MultiplyNumber>
+        <MultiplyNumber>{skip.size * 20}</MultiplyNumber>
         <X size={"4.4rem"} />
         <TrashIcon size={"4.4rem"} />
       </SkipVisual>
