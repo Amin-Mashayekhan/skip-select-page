@@ -36,8 +36,6 @@ Implemented a theme toggle with carefully selected color palettes (blue/orange a
 
   - Estimated capacity indicators: Since the data provided by the server did not include an image for each skip, I designed a custom layout for each card to better guide users and help them visualize the capabilities of each skip. I also implemented icons, animations, and transitions for hovering and selecting the cards. As I didn’t have the exact specifications for your skips, I estimated their capacities based on information available online.
 
-  - Clear private/public property distinctions
-
   - Interactive hover/select states: For improved user experience on the skip cards, I focused on those that were private property only and made them unselectable. Additionally, I disabled the buttons for them and changed the button text, and modified the hover behavior to help users better understand how to interact with the website.
 
   - Responsive sizing constraints to prevent layout breaks: For tablet and mobile devices that should display the cards in a single column, I attempted to set a maximum width to prevent excessive empty spaces within the cards. This also helps avoid issues with the images becoming too wide and disproportionate to their height, which ultimately could harm the user interface.
