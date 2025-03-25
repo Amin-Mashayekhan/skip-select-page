@@ -10,8 +10,8 @@ import {
   X,
 } from "lucide-react";
 
-const Card = styled.div`
-  background: #1e1e2f;
+const Card = styled.div<{ $selected: boolean }>`
+  background: ${({ theme }) => theme.colors.cardBackground};
   color: #fff;
   padding: 20px;
   border-radius: 16px;
@@ -22,6 +22,8 @@ const Card = styled.div`
   max-width: 320px;
   margin: 15px;
   overflow: hidden;
+  border: 2px solid
+    ${({ $selected }) => ($selected ? "#3b82f6" : "transparent")};
 
   &:hover {
     transform: translateY(-8px);
@@ -174,13 +176,15 @@ const Button = styled.button<{ $allowed: boolean }>`
 
 interface SkipCardProps {
   skip: Skip;
+  selected: boolean;
+  onSelect: (skip: Skip) => void;
 }
 
-const SkipCard: React.FC<SkipCardProps> = ({ skip }) => {
+const SkipCard: React.FC<SkipCardProps> = ({ skip, selected, onSelect }) => {
   const totalPrice = (skip.price_before_vat * (1 + skip.vat / 100)).toFixed(2);
 
   return (
-    <Card>
+    <Card $selected={selected}>
       <SkipVisual>
         <MultiplyNumber>{skip.size * 20}</MultiplyNumber>
         <X size={"4.4rem"} />
@@ -200,11 +204,19 @@ const SkipCard: React.FC<SkipCardProps> = ({ skip }) => {
       <Button
         $allowed={skip.allowed_on_road}
         aria-disabled={!skip.allowed_on_road}
+        onClick={() => skip.allowed_on_road && onSelect(skip)}
       >
         <Feature>
           {skip.allowed_on_road ? (
             <>
-              Select This Skip <ArrowRight />
+              {selected ? (
+                "Selected"
+              ) : (
+                <>
+                  Select This Skip
+                  <ArrowRight />
+                </>
+              )}
             </>
           ) : (
             <>

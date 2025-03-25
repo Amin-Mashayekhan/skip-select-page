@@ -4,21 +4,13 @@ import { Skip } from "../types/Skip";
 import { fetchSkips } from "../api/fetchSkips";
 import SkipCard from "../components/SkipCard";
 import GuideModal from "../components/GuideModal";
-import SkeletonLoader from "../components/SkeletonLoader"; // Skeleton loader
-import guide1 from "../assets/images/guide-1.png"; // Import images
+import SkeletonLoader from "../components/SkeletonLoader";
+import guide1 from "../assets/images/guide-1.png";
 import guide2 from "../assets/images/guide-2.jpg";
 import guide3 from "../assets/images/guide-3.jpg";
-import { Info, AlertCircle } from "lucide-react"; // Lucide icons
+import { Info, AlertCircle } from "lucide-react";
 import { animations } from "../styles/animations";
-
-const Container = styled.div`
-  padding: 7px;
-  background: linear-gradient(135deg, #111, #333);
-  min-height: 100vh;
-  @media(min-width: 576px) {
-    padding: 20px;
-  }
-`;
+import { useAppContext } from "../context/AppContext";
 
 const SkipCards = styled.div`
   display: flex;
@@ -29,17 +21,16 @@ const SkipCards = styled.div`
 `;
 
 const Title = styled.h1`
- text-align: center;
- font-size: 2.5rem;
- margin-bottom: 10px;
+  text-align: center;
+  font-size: 2.5rem;
+  margin-top: 62px;
+  margin-bottom: 10px;
 `;
 
 const SubTitle = styled.h3`
- text-align: center;
- font-size: 1.2rem;
+  text-align: center;
+  font-size: 1.2rem;
 `;
-
-
 
 const GuideSection = styled.section`
   margin: 40px 0;
@@ -133,6 +124,11 @@ const SkipSelectPage: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
+  const {
+    selectedSkip,
+    setSelectedSkip,
+  } = useAppContext();
+
   const guideImages = [guide1, guide2, guide3];
 
   useEffect(() => {
@@ -155,6 +151,10 @@ const SkipSelectPage: React.FC = () => {
     setIsModalOpen(true);
   };
 
+  const handleSkipSelect = (skip: Skip) => {
+    setSelectedSkip(skip);
+  };
+
   if (error)
     return (
       <ErrorMessage>
@@ -164,7 +164,7 @@ const SkipSelectPage: React.FC = () => {
     );
 
   return (
-    <Container>
+    <>
       <Title>Choose Your Skip Size</Title>
       <SubTitle>Select the skip size that best suits your needs</SubTitle>
 
@@ -204,11 +204,16 @@ const SkipSelectPage: React.FC = () => {
       ) : (
         <SkipCards>
           {skips.map((skip) => (
-            <SkipCard key={skip.id} skip={skip} />
+            <SkipCard
+              key={skip.id}
+              skip={skip}
+              selected={selectedSkip?.id === skip.id}
+              onSelect={handleSkipSelect}
+            />
           ))}
         </SkipCards>
       )}
-    </Container>
+    </>
   );
 };
 
