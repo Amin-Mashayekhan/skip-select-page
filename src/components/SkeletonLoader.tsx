@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { animations } from "../styles/animations";
 
 const SkeletonContainer = styled.div`
   display: flex;
@@ -14,19 +15,7 @@ const SkeletonCard = styled.div`
   height: 200px;
   background: #333;
   border-radius: 10px;
-  animation: pulse 1.5s infinite;
-
-  @keyframes pulse {
-    0% {
-      opacity: 0.6;
-    }
-    50% {
-      opacity: 0.3;
-    }
-    100% {
-      opacity: 0.6;
-    }
-  }
+  ${animations.pulse}
 `;
 
 const SkeletonLoader: React.FC = () => {

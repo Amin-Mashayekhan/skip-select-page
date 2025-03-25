@@ -3,14 +3,13 @@ import styled from "styled-components";
 import { Skip } from "../types/Skip";
 import { fetchSkips } from "../api/fetchSkips";
 import SkipCard from "../components/SkipCard";
-import GuideModal from "../components/GuideModal";
 import SkeletonLoader from "../components/SkeletonLoader";
 import guide1 from "../assets/images/guide-1.png";
 import guide2 from "../assets/images/guide-2.jpg";
 import guide3 from "../assets/images/guide-3.jpg";
-import { Info, AlertCircle } from "lucide-react";
-import { animations } from "../styles/animations";
+import { AlertCircle } from "lucide-react";
 import { useAppContext } from "../context/AppContext";
+import LightBoxSection from "../components/LightBoxSection";
 
 const SkipCards = styled.div`
   display: flex;
@@ -32,77 +31,6 @@ const SubTitle = styled.h3`
   font-size: 1.2rem;
 `;
 
-const GuideSection = styled.section`
-  margin: 40px 0;
-  text-align: center;
-`;
-
-const GuideTitle = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  z-index: 999;
-  position: relative;
-
-  @media (max-width: 576px) {
-    background: rgba(85, 85, 85, 0.9);
-    position: fixed;
-    padding: 10px;
-    bottom: 0;
-    left: 0;
-    right: 0;
-  }
-`;
-
-const GuideTitleContent = styled.h2`
-  cursor: pointer;
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  margin: 0;
-  font-size: 1.8rem;
-  padding: 10px 20px;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, 0.1);
-  transition: background 0.3s ease;
-
-  &:hover {
-    background: rgba(255, 255, 255, 0.2);
-  }
-
-  svg {
-    ${animations.scaleOpacity}
-  }
-`;
-
-const GuideImages = styled.div`
-  display: none;
-  justify-content: center;
-  gap: 20px;
-  margin-top: 22px;
-  flex-wrap: wrap;
-
-  @media (min-width: 576px) {
-    display: flex;
-  }
-`;
-
-const GuideImage = styled.img`
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-
-  &:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-  }
-`;
-
 const ErrorMessage = styled.div`
   display: flex;
   align-items: center;
@@ -121,15 +49,10 @@ const SkipSelectPage: React.FC = () => {
   const [skips, setSkips] = useState<Skip[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
-  const {
-    selectedSkip,
-    setSelectedSkip,
-  } = useAppContext();
+  const { selectedSkip, setSelectedSkip } = useAppContext();
 
-  const guideImages = [guide1, guide2, guide3];
+  const guideImages: string[] = [guide1, guide2, guide3];
 
   useEffect(() => {
     const loadSkips = async () => {
@@ -146,10 +69,6 @@ const SkipSelectPage: React.FC = () => {
     loadSkips();
   }, []);
 
-  const openModal = (index: number) => {
-    setSelectedImageIndex(index);
-    setIsModalOpen(true);
-  };
 
   const handleSkipSelect = (skip: Skip) => {
     setSelectedSkip(skip);
@@ -169,34 +88,7 @@ const SkipSelectPage: React.FC = () => {
       <SubTitle>Select the skip size that best suits your needs</SubTitle>
 
       {/* Guide Section */}
-      <GuideSection>
-        <GuideTitle>
-          <GuideTitleContent onClick={() => openModal(0)}>
-            <Info size={24} />
-            Skips Size Guide
-          </GuideTitleContent>
-        </GuideTitle>
-        <GuideImages>
-          {guideImages.map((image, index) => (
-            <GuideImage
-              key={index}
-              src={image}
-              alt={`Guide Image ${index + 1}`}
-              onClick={() => openModal(index)}
-            />
-          ))}
-        </GuideImages>
-      </GuideSection>
-
-      {/* Guide Modal */}
-      {isModalOpen && (
-        <GuideModal
-          images={guideImages}
-          selectedIndex={selectedImageIndex}
-          onClose={() => setIsModalOpen(false)}
-          onSelectImage={setSelectedImageIndex}
-        />
-      )}
+      <LightBoxSection lightBoxImages={guideImages} title='Skips Size Guide' />
 
       {/* Skip Cards Section */}
       {loading ? (
