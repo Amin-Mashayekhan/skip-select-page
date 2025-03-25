@@ -3,7 +3,7 @@
 #### 🎨 UI/UX Enhancements
 - 🌓 **Theme toggle** with system preference detectionLight/Dark Mode
 Implemented a theme toggle with carefully selected color palettes (blue/orange accents) for both modes in order to accessibility and visual comfort.
-- Implemented Smooth animations in order to clear visual feedbacks improving the UX
+- **Implemented Smooth animations** in order to clear visual feedbacks improving the UX
 
 #### 🔄 Progress Indicator Section
 - Redesigned the step tracker with:
