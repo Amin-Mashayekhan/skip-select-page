@@ -59,11 +59,11 @@ Implemented a theme toggle with carefully selected color palettes (blue/orange a
 
 
 #### Key Features
-✔ Theme system persists across sessions
-✔ Interactive visual guides
-✔ Clear skip selection feedback
-✔ Full mobile/tablet support
-✔ Accessible UI patterns
+##### ✔ Theme system persists across sessions
+##### ✔ Interactive visual guides
+##### ✔ Clear skip selection feedback
+##### ✔ Full mobile/tablet support
+##### ✔ Accessible UI patterns
 
 ------------
 ### Deployed on:
