@@ -186,7 +186,7 @@ interface SkipCardProps {
 }
 
 const SkipCard: React.FC<SkipCardProps> = ({ skip, selected, onSelect }) => {
-  const totalPrice = (skip.price_before_vat * (1 + skip.vat / 100)).toFixed(2);
+  const totalPrice = (skip.price_before_vat * (1 + skip.vat / 100)).toFixed(0);
 
   return (
     <Card data-selected={selected} $selected={selected}>
@@ -204,7 +204,7 @@ const SkipCard: React.FC<SkipCardProps> = ({ skip, selected, onSelect }) => {
       <FCenter>
         <CalendarRange size={22} /> {skip.hire_period_days}-day hire period
       </FCenter>
-      <Price>£{Math.ceil(Number(totalPrice))} per week</Price>
+      <Price>£{totalPrice} per week</Price>
 
       <Button
         $allowed={skip.allowed_on_road}
