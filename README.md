@@ -42,7 +42,7 @@ Implemented a theme toggle with carefully selected color palettes (blue/orange a
 
 #### 💻 Technical Implementation
 ##### Architecture
-  - Component-based structure with
+  - Component-based structure
 
 ##### Code Quality
 - Strictly used:
