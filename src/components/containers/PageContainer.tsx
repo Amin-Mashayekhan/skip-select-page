@@ -7,7 +7,7 @@ import ThemeToggle from "../ThemeToggle";
 import NavigationButtons from "../NavigationButtons";
 
 const Container = styled.div<{ $darkMode: boolean }>`
-  padding: 7px 120px;
+  padding: 7px 7px 120px;
   background: ${({ $darkMode }) =>
     $darkMode
       ? "linear-gradient(135deg, #111, #333)"
@@ -15,7 +15,7 @@ const Container = styled.div<{ $darkMode: boolean }>`
   min-height: 100vh;
   padding-bottom: 120px;
   @media (min-width: ${({ theme }) => theme.breakPoints.tablet}) {
-    padding: 20px;
+    padding: 20px 20px 70px;
   }
 `;
 
