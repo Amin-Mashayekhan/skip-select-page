@@ -25,11 +25,11 @@ Implemented a theme toggle with carefully selected color palettes (blue/orange a
 
 - Since I didn't have access to the actual images and information about the skips you used for your clients, I downloaded three images from various websites. The references for each one are as follows::
 
-  -  [[Guide-1](https://www.rabbitskips.co.uk/wp-content/uploads/2023/04/rabbit-skip-hire-sizes-made-simple.png)]
+  -  src/assets/images/guide-1.png: https://www.rabbitskips.co.uk/wp-content/uploads/2023/04/rabbit-skip-hire-sizes-made-simple.png
 
-  -  [[Guide-2](https://www.skiphireisleofwight.co.uk/wp-content/uploads/2014/01/Dimensions.jpg)]
+  -  src/assets/images/guide-2.jpg: https://www.skiphireisleofwight.co.uk/wp-content/uploads/2014/01/Dimensions.jpg
 
-  -  [[Guide-3](https://scontent-fra5-2.xx.fbcdn.net/v/t39.30808-6/465462216_28023924923872584_3306418396610901225_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=833d8c&_nc_ohc=z_JurjdnAgMQ7kNvgEIw1pA&_nc_oc=AdmozWMtnqMszxH0wIcFx3lKfUpCNIcE3r714s_ZdzzumEXiCwk6zA8Gx9gycku2HwzI1bGE4uAWDdpmS9xK2nz6&_nc_zt=23&_nc_ht=scontent-fra5-2.xx&_nc_gid=sRW0RhyoXJ8aQK9LiwZfaQ&oh=00_AYHfbKqpG7m4hz24CO168Tns5_Wd4RWlPZ6JvZwAtiMptQ&oe=67E580CD)]
+  -  src/assets/images/guide-3.jpg: https://scontent-fra5-2.xx.fbcdn.net/v/t39.30808-6/465462216_28023924923872584_3306418396610901225_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=833d8c&_nc_ohc=z_JurjdnAgMQ7kNvgEIw1pA&_nc_oc=AdmozWMtnqMszxH0wIcFx3lKfUpCNIcE3r714s_ZdzzumEXiCwk6zA8Gx9gycku2HwzI1bGE4uAWDdpmS9xK2nz6&_nc_zt=23&_nc_ht=scontent-fra5-2.xx&_nc_gid=sRW0RhyoXJ8aQK9LiwZfaQ&oh=00_AYHfbKqpG7m4hz24CO168Tns5_Wd4RWlPZ6JvZwAtiMptQ&oe=67E580CD
 
 #### 🃏 Skip Cards
 - Designed intuitive visual representations featuring:
