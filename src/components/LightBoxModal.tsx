@@ -8,7 +8,7 @@ const ModalOverlay = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.8);
+  background: ${({ theme }) => theme.colors.transparentDark};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -31,8 +31,8 @@ const CloseButton = styled.button`
   position: fixed;
   top: 20px;
   right: 20px;
-  background: #ff4444;
-  color: white;
+  background: ${({ theme }) => theme.colors.red};
+  color: ${({ theme }) => theme.colors.light};
   border: none;
   border-radius: 50%;
   width: 40px;
@@ -53,14 +53,15 @@ const ModalImage = styled.img<{ $isZoomed: boolean }>`
   transition: transform 0.3s ease;
   background-position: top left;
   object-fit: contain;
-  transform: ${({ $isZoomed }) => ($isZoomed ? "scale(1.8) translate(16%, 24%)" : "scale(1)")};
+  transform: ${({ $isZoomed }) =>
+    $isZoomed ? "scale(1.8) translate(16%, 24%)" : "scale(1)"};
 `;
 
 const NavigationButton = styled.button`
   position: fixed;
   top: 50%;
   transform: translateY(-50%);
-  background: rgba(255, 255, 255, 0.5);
+  background: ${({ theme }) => theme.colors.lightTransparentWhite};
   border: none;
   border-radius: 50%;
   width: 50px;
@@ -74,7 +75,7 @@ const NavigationButton = styled.button`
   z-index: 1001;
 
   &:hover {
-    background: rgba(255, 255, 255, 0.8);
+    background: ${({ theme }) => theme.colors.transparentWhite};
   }
 `;
 
@@ -90,8 +91,8 @@ const ZoomIndicator = styled.div`
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background: rgba(0, 0, 0, 0.7);
-  color: white;
+  background: ${({ theme }) => theme.colors.transparentDark};
+  color: ${({ theme }) => theme.colors.text};
   padding: 10px;
   border-radius: 5px;
   display: flex;
@@ -102,14 +103,14 @@ const ZoomIndicator = styled.div`
   z-index: 1001;
 `;
 
-interface GuideModalProps {
+interface LightBoxModalProps {
   images: string[];
   selectedIndex: number;
   onClose: () => void;
   onSelectImage: (index: number) => void;
 }
 
-const GuideModal: React.FC<GuideModalProps> = ({
+const LightBoxModal: React.FC<LightBoxModalProps> = ({
   images,
   selectedIndex,
   onClose,
@@ -152,7 +153,7 @@ const GuideModal: React.FC<GuideModalProps> = ({
         </CloseButton>
         <ModalImage
           src={images[selectedIndex]}
-          alt={`Guide Image ${selectedIndex + 1}`}
+          alt={`LightBox Image ${selectedIndex + 1}`}
           $isZoomed={isZoomed}
           onClick={toggleZoom}
         />
@@ -171,4 +172,4 @@ const GuideModal: React.FC<GuideModalProps> = ({
   );
 };
 
-export default GuideModal;
+export default LightBoxModal;
