@@ -18,7 +18,7 @@ export const GlobalStyles = createGlobalStyle<GlobalStyleProps>`
     font-size: 16px;
   }
 
-  @media (max-width: 450px) {
+  @media (max-width:  ${({ theme }) => theme.breakPoints.mobileM}) {
     html {
       font-size: 14px;
     }

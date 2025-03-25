@@ -12,7 +12,7 @@ import {
 
 const Card = styled.div<{ $selected: boolean }>`
   background: ${({ theme }) => theme.colors.cardBackground};
-  color: #fff;
+  color: ${({ theme }) => theme.colors.text};
   padding: 20px;
   border-radius: 16px;
   text-align: center;
@@ -23,9 +23,11 @@ const Card = styled.div<{ $selected: boolean }>`
   margin: 15px;
   overflow: hidden;
   border: 2px solid
-    ${({ $selected }) => ($selected ? "#3b82f6" : "transparent")};
+    ${({ $selected, theme }) =>
+      $selected ? theme.colors.primary : "transparent"};
 
-  &:hover {
+  &:hover,
+  &[data-selected="true"] {
     transform: translateY(-8px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
   }
@@ -47,7 +49,8 @@ const SkipVisual = styled.div`
     transition: transform 0.3s ease-in-out;
   }
 
-  ${Card}:hover & > * {
+  ${Card}:hover & > *,
+  ${Card}[data-selected="true"] & > * {
     transform: scale(1.04);
   }
 
@@ -64,29 +67,33 @@ const SkipVisual = styled.div`
 `;
 
 const TrashIcon = styled(Trash2)`
-  color: white;
-  opacity: 0.9;
+  color: ${({ theme }) => theme.colors.light};
+  filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.3));
+`;
+
+const XIcon = styled(X)`
+  color: ${({ theme }) => theme.colors.light};
   filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.3));
 `;
 
 const MultiplyNumber = styled.p`
   font-size: 4rem;
   font-weight: 500;
-  color: #fff;
+  color: ${({ theme }) => theme.colors.light};
   text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.4);
 `;
 
 const Title = styled.h3`
   font-size: 1.6rem;
   margin-bottom: 12px;
-  color: #f1f1f1;
+  color: ${({ theme }) => theme.colors.text};
 `;
 
 const Price = styled.h2`
   margin: 15px 0;
   font-size: 1.8rem;
   font-weight: 700;
-  color: #3b82f6;
+  color: ${({ theme }) => theme.colors.primary};
   position: relative;
   display: inline-block;
 
@@ -97,19 +104,14 @@ const Price = styled.h2`
     left: 0;
     right: 0;
     height: 2px;
-    background: linear-gradient(90deg, transparent, #3b82f6, transparent);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      ${({ theme }) => theme.colors.primary},
+      transparent
+    );
     opacity: 0.5;
   }
-`;
-
-const Feature = styled.p`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 7px;
-  font-size: 1.2rem;
-  color: #ccc;
-  margin: 10px 0;
 `;
 
 const FCenter = styled.div`
@@ -117,11 +119,14 @@ const FCenter = styled.div`
   align-items: center;
   justify-content: center;
   gap: 7px;
+  font-size: 1.2rem;
+  margin: 10px 0;
 `;
 
 const Button = styled.button<{ $allowed: boolean }>`
-  background: ${({ $allowed }) => ($allowed ? "#3b82f6" : "#4b5563")};
-  color: white;
+  background: ${({ $allowed, theme }) =>
+    $allowed ? theme.colors.primary : theme.colors.disabled};
+  color: ${({ theme }) => theme.colors.light};
   padding: 14px 20px;
   border: none;
   border-radius: 10px;
@@ -130,7 +135,7 @@ const Button = styled.button<{ $allowed: boolean }>`
   width: 100%;
   font-size: 1rem;
   font-weight: 500;
-  transition: all 0.3s ease;
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -151,7 +156,7 @@ const Button = styled.button<{ $allowed: boolean }>`
       rgba(255, 255, 255, 0.1),
       transparent
     );
-    transition: all 0.5s ease;
+    transition: left 0.5s ease;
     display: ${({ $allowed }) => ($allowed ? "block" : "none")};
   }
 
@@ -159,7 +164,7 @@ const Button = styled.button<{ $allowed: boolean }>`
     $allowed &&
     css`
       &:hover {
-        background: #2563eb;
+        background: ${({ theme }) => theme.colors.lightPrimary};
         transform: translateY(-2px);
         box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
 
@@ -184,10 +189,10 @@ const SkipCard: React.FC<SkipCardProps> = ({ skip, selected, onSelect }) => {
   const totalPrice = (skip.price_before_vat * (1 + skip.vat / 100)).toFixed(2);
 
   return (
-    <Card $selected={selected}>
+    <Card data-selected={selected} $selected={selected}>
       <SkipVisual>
         <MultiplyNumber>{skip.size * 20}</MultiplyNumber>
-        <X size={"4.4rem"} />
+        <XIcon size={"4.4rem"} />
         <TrashIcon size={"4.4rem"} />
       </SkipVisual>
 
@@ -196,9 +201,9 @@ const SkipCard: React.FC<SkipCardProps> = ({ skip, selected, onSelect }) => {
           <Ruler /> {skip.size} Yard Skip
         </FCenter>
       </Title>
-      <Feature>
+      <FCenter>
         <CalendarRange size={22} /> {skip.hire_period_days}-day hire period
-      </Feature>
+      </FCenter>
       <Price>£{Math.ceil(Number(totalPrice))} per week</Price>
 
       <Button
@@ -206,7 +211,7 @@ const SkipCard: React.FC<SkipCardProps> = ({ skip, selected, onSelect }) => {
         aria-disabled={!skip.allowed_on_road}
         onClick={() => skip.allowed_on_road && onSelect(skip)}
       >
-        <Feature>
+        <FCenter>
           {skip.allowed_on_road ? (
             <>
               {selected ? (
@@ -223,7 +228,7 @@ const SkipCard: React.FC<SkipCardProps> = ({ skip, selected, onSelect }) => {
               <TriangleAlert size={"1.4rem"} /> Private Property Only
             </>
           )}
-        </Feature>
+        </FCenter>
       </Button>
     </Card>
   );

@@ -8,7 +8,7 @@ const StyledThemeToggle = styled.button`
   top: 7px;
   right: 7px;
   background: ${({ theme }) => theme.colors.primary};
-  color: white;
+  color: ${({ theme }) => theme.colors.light};
   border: none;
   border-radius: 50%;
   width: 40px;
@@ -20,6 +20,7 @@ const StyledThemeToggle = styled.button`
   z-index: 100;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
+  transition: transform 0.3s ease;
 
   &:hover {
     transform: scale(1.1);
@@ -27,15 +28,12 @@ const StyledThemeToggle = styled.button`
 `;
 
 const ThemeToggle: React.FC = () => {
-  const {
-    darkMode,
-    toggleDarkMode,
-  } = useAppContext();
+  const { darkMode, toggleDarkMode } = useAppContext();
 
   return (
-      <StyledThemeToggle onClick={toggleDarkMode}>
-        {darkMode ? <Sun size={20} /> : <Moon size={20} />}
-      </StyledThemeToggle>
+    <StyledThemeToggle onClick={toggleDarkMode}>
+      {darkMode ? <Sun size={20} /> : <Moon size={20} />}
+    </StyledThemeToggle>
   );
 };
 
