@@ -13,6 +13,7 @@ const Container = styled.div<{ $darkMode: boolean }>`
       ? "linear-gradient(135deg, #111, #333)"
       : "linear-gradient(135deg, #f4f4f4, #dfdfdf)"};
   min-height: 100vh;
+  padding-bottom: 120px;
   @media (min-width: ${({ theme }) => theme.breakPoints.mobileLG}) {
     padding: 20px;
   }
