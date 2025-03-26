@@ -92,7 +92,7 @@ const ZoomIndicator = styled.div`
   bottom: 20px;
   right: 20px;
   background: ${({ theme }) => theme.colors.transparentDark};
-  color: ${({ theme }) => theme.colors.text};
+  color: ${({ theme }) => theme.colors.light};
   padding: 10px;
   border-radius: 5px;
   display: flex;
