@@ -1,15 +1,9 @@
 import { keyframes, css } from "styled-components";
 import { lightTheme } from "./theme";
 
-const spinAnimation = keyframes`
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-`;
-
 const scaleOpacityAnimation = keyframes`
-  0% { transform: scale(1); opacity: 1; }
+  0%, 100%  { transform: scale(1); opacity: 1; }
   50% { transform: scale(1.15); opacity: 0.5; }
-  100% { transform: scale(1); opacity: 1; }
 `;
 
 const blueShadowAnimation = keyframes`
@@ -28,25 +22,18 @@ const blueShadowAnimation = keyframes`
 `;
 
 const pulse = keyframes`
-  0% {
+  0%, 100% {
     opacity: 0.6;
   }
   50% {
     opacity: 0.3;
   }
-  100% {
-    opacity: 0.6;
-  }
 `;
 
 // Reusable animation styles
 export const animations = {
-  spin: css`
-    animation: ${spinAnimation} 1.2s ease infinite;
-    will-change: transform;
-  `,
   scaleOpacity: css`
-    animation: ${scaleOpacityAnimation} 1.2s ease infinite;
+    animation: ${scaleOpacityAnimation} 1.2s ease-in-out infinite;
     will-change: transform, opacity;
   `,
   blueShadow: css`
@@ -54,6 +41,6 @@ export const animations = {
     will-change: box-shadow;
   `,
   pulse: css`
-    animation: ${pulse} 1.5s infinite;
+    animation: ${pulse} 1.5s ease-in-out infinite;
   `,
 };
