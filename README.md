@@ -31,10 +31,10 @@ Implemented a theme toggle with carefully selected color palettes (blue/orange a
 
   -  src/assets/images/guide-3.jpg: https://scontent-fra5-2.xx.fbcdn.net/v/t39.30808-6/465462216_28023924923872584_3306418396610901225_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=833d8c&_nc_ohc=z_JurjdnAgMQ7kNvgEIw1pA&_nc_oc=AdmozWMtnqMszxH0wIcFx3lKfUpCNIcE3r714s_ZdzzumEXiCwk6zA8Gx9gycku2HwzI1bGE4uAWDdpmS9xK2nz6&_nc_zt=23&_nc_ht=scontent-fra5-2.xx&_nc_gid=sRW0RhyoXJ8aQK9LiwZfaQ&oh=00_AYHfbKqpG7m4hz24CO168Tns5_Wd4RWlPZ6JvZwAtiMptQ&oe=67E580CD
 
-#### 🃏 Skip Cards
+####  Skip Cards
 - Designed intuitive visual representations featuring:
 
-  - Estimated capacity indicators: Since the data provided by the server did not include an image for each skip, I designed a custom layout for each card to better guide users and help them visualize the capabilities of each skip. I also implemented icons, animations, and transitions for hovering and selecting the cards. As I didn’t have the exact specifications for your skips, I estimated their capacities based on information available online.
+  - Custom card's image  that includes estimated the skip's capacity: Since the data provided by the server did not include an image for each skip, I designed a custom layout for each card to better guide users and help them visualize the capabilities of each skip. I also implemented icons, animations, and transitions for hovering and selecting the cards. As I didn’t have the exact specifications for your skips, I estimated their capacities based on information available online.
 
   - Interactive hover/select states: For improved user experience on the skip cards, I focused on those that were private property only and made them unselectable. Additionally, I disabled the buttons for them and changed the button text, and modified the hover behavior to help users better understand how to interact with the website.
 
@@ -53,7 +53,7 @@ Implemented a theme toggle with carefully selected color palettes (blue/orange a
 
   - localStorage for state persistence: In moments of disconnection or unexpected challenges, empowered the users by storing essential global states in localStorage, allowing them to seamlessly continue their process without the need to start anew.
 
-  - Trying to apply Mobile-first responsive design
+  - Tried to apply Mobile-first responsive design
 
 
 #### Key Features
